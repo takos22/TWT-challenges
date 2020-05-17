@@ -2,7 +2,7 @@ def decode(encoded):
     decoded = ""
     i = 0
     while i < len(encoded):
-        decoded += encoded[i+1] * int(encoded[i])
+        decoded += encoded[i+1] *int(encoded[i])
         i += 2
     return decoded
 
