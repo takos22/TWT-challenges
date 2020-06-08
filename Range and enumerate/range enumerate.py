@@ -1,6 +1,8 @@
 def erange(*args):
     if len(args) == 0:
         raise TypeError("erange expected 1 arguments, got 0")
+    if len(args) > 3:
+        raise TypeError(f"erange expected 3 arguments, got {len(args)}")
     try:
         args = [int(i) for i in args]
     except ValueError:
