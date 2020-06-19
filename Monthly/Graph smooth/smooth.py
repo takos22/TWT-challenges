@@ -18,16 +18,16 @@ def smooth(points: list, max_width: int = 501) -> list:
     smooth_points = points.copy()
     for i in range(len(points)):
         # start of the average of points (i-250 | 0 if i < 250 | i - distance to len if i > len-250)
-        min_i = max((i-(max_width-1)//2, 0)) if i+(max_width-1)//2 <= len(points) else -len(points) + 2*i
+        min_i = max((i-(max_width-1)//2, 0)) if i+(max_width-1)//2 <= len(points) else min((-len(points) + 2*i, len(points)-25))
 
         # end of the average of points (i+250 | len if i > len-250 | i + distance to 0 if i < 250)
-        max_i = min((i+(max_width-1)//2, len(points))) if i-(max_width-1)//2 >= 0 else 2*i + 1
+        max_i = min((i+(max_width-1)//2, len(points))) if i-(max_width-1)//2 >= 0 else max((2*i + 1, 25))
 
         # average of his value the 500 neighbouring points' value
         smooth_points[i] = sum(points[min_i: max_i]) / (max_i - min_i)
     return smooth_points
 
-def multi_smooth(points: list, iterations: int, max_width: int = 501) -> list:
+def multi_smooth(points: list, iterations: int = 20, max_width: int = 75) -> list:
     for i in range(iterations):
         points = smooth(points, max_width=max_width)
     return points

@@ -27,19 +27,19 @@ def numerate(elements, start=0):
 
 try:
     print(list(erange()))
-except TypeError as e:
+except Exception as e:
     print(str(e))
 try:
     print(list(erange(1, 2, 3, 4)))
-except TypeError as e:
+except Exception as e:
     print(str(e))
 try:
     print(list(erange("10")))
-except TypeError as e:
+except Exception as e:
     print(str(e))
 try:
     print(list(erange(0, 10, 0)))
-except ValueError as e:
+except Exception as e:
     print(str(e))
 
 print(list(range(10)))
@@ -48,8 +48,10 @@ print(list(range(1, 11)))
 print(list(erange(1, 11)))
 print(list(range(0, 30, 5)))
 print(list(erange(0, 30, 5)))
-print(list(range(2, 0, 1)))
-print(list(erange(2, 0, 1)))
+print(list(range(10, 0, -1)))
+print(list(erange(10, 0, -1)))
+print(list(range(10, 0, 1)))
+print(list(erange(10, 0, 1)))
 
 print(list(enumerate("test 10")))
 print(list(numerate("test 10")))
